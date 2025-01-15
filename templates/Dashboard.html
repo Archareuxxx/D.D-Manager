@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Database Dashboard</h1>
+<form method="POST" action="/add_database">
+    <input type="text" name="db_name" placeholder="Database Name" required>
+    <button type="submit">Add Database</button>
+</form>
+<hr>
+<h2>Databases:</h2>
+<ul>
+    {% for db in databases %}
+    <li>
+        {{ db }}
+        <a href="/view/{{ db }}">View</a>
+        <a href="/delete_database/{{ db }}">Delete</a>
+        <a href="/export/{{ db }}">Export</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
