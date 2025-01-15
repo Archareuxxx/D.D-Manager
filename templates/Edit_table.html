@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Manage Tables in {{ db_name }}</h1>
+<form method="POST" action="/add_table/{{ db_name }}">
+    <input type="text" name="table_name" placeholder="Table Name" required>
+    <input type="text" name="columns" placeholder="Columns (e.g., id INT, name TEXT)" required>
+    <button type="submit">Add Table</button>
+</form>
+<hr>
+<h2>Tables:</h2>
+<ul>
+    {% for table in tables %}
+    <li>{{ table[0] }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
